@@ -45,6 +45,6 @@
   spl_autoload_register('my_autoload');
 
   //set db 
-  $db = db_connect();
+  $database = db_connect();
 
 ?>
