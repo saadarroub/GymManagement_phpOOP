@@ -49,7 +49,15 @@ $bike_array = $parser->parse();
 
     </table>
   </div>
+<?php
 
+$sql = "SELECT * FROM bicycles";
+$result = $db->query($sql);
+$row = $result->fetch_assoc();
+$result->free();
+echo $row['model'];
+
+?>
 </div>
 
 <?php include(SHARED_PATH . '/public_footer.php'); ?>
