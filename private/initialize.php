@@ -16,7 +16,7 @@
   // * Do not need to include the domain
   // * Use same document root as webserver
   // * Can set a hardcoded value:
-  // define("WWW_ROOT", '/~kevinskoglund/chain_gang/public');
+  // define("WWW_ROOT", '/~exampleNme/chain_gang/public');
   // define("WWW_ROOT", '');
   // * Can dynamically find everything in URL up to "/public"
   $public_end = strpos($_SERVER['SCRIPT_NAME'], '/public') + 7;
@@ -24,6 +24,7 @@
   define("WWW_ROOT", $doc_root);
 
   require_once('functions.php');
+  require_once('database_functions.php');
 
   // Load class definitions manually
 
@@ -42,5 +43,8 @@
     }
   }
   spl_autoload_register('my_autoload');
+
+  //set db 
+  $db = db_connect();
 
 ?>
