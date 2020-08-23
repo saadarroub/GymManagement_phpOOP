@@ -32,9 +32,9 @@
   // require_once('classes/bicycle.class.php');
 
   // -> All classes in directory
-  /* foreach(glob('classes/*.class.php') as $file) {
+  foreach(glob('classes/*.class.php') as $file) {
     require_once($file);
-  } */
+  }
 
   // Autoload class definitions
   function my_autoload($class) {
