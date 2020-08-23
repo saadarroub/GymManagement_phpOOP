@@ -19,4 +19,4 @@
 
   </body>
 </html>
-<?php db_disconnect($connection) ?>
+<?php db_disconnect($database) ?>
