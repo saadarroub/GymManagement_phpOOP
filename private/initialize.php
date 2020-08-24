@@ -25,6 +25,8 @@
 
   require_once('functions.php');
   require_once('database_functions.php');
+  require_once('status_error_functions.php');
+  
 
   // Load class definitions manually
 
