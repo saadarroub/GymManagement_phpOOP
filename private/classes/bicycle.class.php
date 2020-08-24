@@ -29,6 +29,19 @@ class Bicycle
     return $object_array;
   }
 
+  static protected function instantiate($record)
+  {
+    $object = new self;
+    // Could manually assign values to properties
+    // but automatically assignment is easier and re-usable
+    foreach ($record as $property => $value) {
+      if (property_exists($object, $property)) {
+        $object->$property = $value;
+      }
+    }
+    return $object;
+  }
+
   static public function find_all()
   {
     $sql = "SELECT * FROM bicycles";
@@ -44,19 +57,6 @@ class Bicycle
     }else{
       return false;
     }
-  }
-
-  static protected function instantiate($record)
-  {
-    $object = new self;
-    // Could manually assign values to properties
-    // but automatically assignment is easier and re-usable
-    foreach ($record as $property => $value) {
-      if (property_exists($object, $property)) {
-        $object->$property = $value;
-      }
-    }
-    return $object;
   }
 
   public function save(){
