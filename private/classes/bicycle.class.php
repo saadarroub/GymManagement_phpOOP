@@ -129,6 +129,14 @@ class Bicycle
     }
   }
 
+  public function delete(){
+    $sql = "DELETE FROM bicycles ";
+    $sql .= " WHERE id= '" . self::$database->escape_string($this->id) . "' ";
+    $sql .= "LIMIT 1";
+    $result = self::$database->query($sql);
+    return $result;
+  }
+
   // Properties which have database columns, excluding ID
   public function attributes()
   {
