@@ -46,14 +46,14 @@ class DatabaseObject
 
     static public function find_all()
     {
-        $sql = "SELECT * FROM bicycles" . static::$table_name;
+        $sql = "SELECT * FROM " . static::$table_name;
         return static::find_by_sql($sql);
     }
 
     static public function find_by_id($id)
     {
-        $sql = "SELECT * FROM bicycles " . static::$table_name;
-        $sql .= "WHERE id = '" . self::$database->escape_string($id) . "'";
+        $sql = "SELECT * FROM " . static::$table_name;
+        $sql .= " WHERE id = '" . self::$database->escape_string($id) . "'";
         $obj_array = static::find_by_sql($sql);
         if (!empty($obj_array)) {
             return array_shift($obj_array);

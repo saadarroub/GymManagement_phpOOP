@@ -1,6 +1,6 @@
 <?php
 
-class Bicycle
+class Bicycle extends DatabaseObject
 {
 
   static protected $table_name = 'bicycles';
