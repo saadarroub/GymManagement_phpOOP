@@ -2,7 +2,7 @@
 
 <?php
   
-// Find all bicycles;
+// Find all Admins;
 $admins = Admin::find_all();
   
 ?>
