@@ -5,6 +5,12 @@ class Session
 
     private $admin_id;
 
+    public function __construct()
+    {
+        session_start();
+        $this->checked_stored_login();
+    }
+
     public function login($admin)
     {
         if ($admin) {
@@ -26,6 +32,12 @@ class Session
         unset($_SESSION['admin_id']);
         unset($this->admin_id);
         return true;
+    }
+
+    private function checked_stored_login(){
+        if(isset($_SESSION['admin_id'])){
+        $this->admin_id = $_SESSION['admin_id'];
+        }
     }
 }
 
