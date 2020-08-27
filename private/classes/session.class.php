@@ -1,0 +1,32 @@
+<?php
+
+class Session
+{
+
+    private $admin_id;
+
+    public function login($admin)
+    {
+        if ($admin) {
+            //prevent session fixation attacks
+            session_regenerate_id();
+            $_SESSION['admin_id'] = $admin->id;
+            $this->admin_id = $admin->id;
+        }
+        return true;
+    }
+
+    public function is_logged_in()
+    {
+        return isset($this->admin_id);
+    }
+
+    public function logout()
+    {
+        unset($_SESSION['admin_id']);
+        unset($this->admin_id);
+        return true;
+    }
+}
+
+?>

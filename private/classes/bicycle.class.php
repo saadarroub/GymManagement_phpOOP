@@ -99,3 +99,4 @@ class Bicycle extends DatabaseObject
     return $this->errors;
   }
 }
+?>

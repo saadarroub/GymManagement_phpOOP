@@ -171,3 +171,4 @@ class DatabaseObject
     // ----- END OF ACTIVE RECORD CODE ------
 
 }
+?>

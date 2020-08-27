@@ -29,6 +29,10 @@ class Admin extends DatabaseObject {
         $this->hashed_password = password_hash($this->password, PASSWORD_BCRYPT);
     }
 
+    public function verify_password($password){
+      return password_verify($password, $this->hashed_password);
+    }
+
     protected function create()
     {
         $this->set_hashed_password();
@@ -81,7 +85,7 @@ class Admin extends DatabaseObject {
         if($this->password_required) {
           if(is_blank($this->password)) {
             $this->errors[] = "Password cannot be blank.";
-          } elseif (!has_length($this->password, array('min' => 12))) {
+          } /* elseif (!has_length($this->password, array('min' => 12))) {
             $this->errors[] = "Password must contain 12 or more characters";
           } elseif (!preg_match('/[A-Z]/', $this->password)) {
             $this->errors[] = "Password must contain at least 1 uppercase letter";
@@ -91,7 +95,7 @@ class Admin extends DatabaseObject {
             $this->errors[] = "Password must contain at least 1 number";
           } elseif (!preg_match('/[^A-Za-z0-9\s]/', $this->password)) {
             $this->errors[] = "Password must contain at least 1 symbol";
-          }
+          } */
     
           if(is_blank($this->confirm_password)) {
             $this->errors[] = "Confirm password cannot be blank.";
@@ -115,12 +119,6 @@ class Admin extends DatabaseObject {
         }
       }
 }
-
-
-
-
-
-
 
 
 ?>
