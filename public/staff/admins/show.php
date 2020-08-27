@@ -16,7 +16,7 @@ $admin = Admin::find_by_id($id);
   <a class="back-link" href="<?php echo url_for('/staff/admins/index.php'); ?>">&laquo; Back to List</a>
 
   <div class="admin show">
-
+<?php echo display_session_message() ?>
     <h1>Admin: <?php echo h($admin->first_name); ?></h1>
 
     <div class="attributes">
