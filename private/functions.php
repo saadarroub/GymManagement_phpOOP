@@ -51,4 +51,10 @@ if(!function_exists('money_format')) {
   }
 }
 
+//function : get extension
+function get_extenssion($img_name){
+  $extension = explode('.', $img_name);
+  $img_extension = strtolower(end($extension));
+  return $img_extension;
+ }
 ?>

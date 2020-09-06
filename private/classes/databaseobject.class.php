@@ -50,6 +50,16 @@ class DatabaseObject
         return static::find_by_sql($sql);
     }
 
+    static public function count()
+    {
+        $sql = "SELECT count(*) FROM " . static::$table_name;
+        $result = self::$database->query($sql);
+        /* $row = $result->fetch_array();
+        return array_shift($row); */
+        $row = $result->fetch_row();
+        return $row[0];
+    }
+
     static public function find_by_id($id)
     {
         $sql = "SELECT * FROM " . static::$table_name;
@@ -83,6 +93,7 @@ class DatabaseObject
         $sql .= ") VALUE ('";
         $sql .= join("', '", array_values($attributes));
         $sql .= "')";
+        //echo $sql;
         $result = self::$database->query($sql);
         if ($result) {
             $this->id = self::$database->insert_id;

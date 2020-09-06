@@ -16,13 +16,13 @@ class Session
         $this->checked_stored_login();
     }
 
-    public function login($admin)
+    public function login($user)
     {
-        if ($admin) {
+        if ($user) {
             //prevent session fixation attacks
             session_regenerate_id();
-            $this->admin_id = $_SESSION['admin_id'] = $admin->id;
-            $this->username = $_SESSION['username'] = $admin->username;
+            $this->admin_id = $_SESSION['admin_id'] = $user->id;
+            $this->username = $_SESSION['username'] = $user->UserName;
             $this->last_login = $_SESSION['last_login'] = time();
         }
         return true;
@@ -63,6 +63,26 @@ class Session
         }
       }
 
+      public function messageTow($msg="") {
+        if(!empty($msg)) {
+          // Then this is a "set" message
+          $_SESSION['messagetow'] = $msg;
+          return true;
+        } else {
+          // Then this is a "get" message
+          return $_SESSION['messagetow'] ?? '';
+        }
+      }
+      public function messageInfo($msg="") {
+        if(!empty($msg)) {
+          // Then this is a "set" message
+          $_SESSION['messageinfo'] = $msg;
+          return true;
+        } else {
+          // Then this is a "get" message
+          return $_SESSION['messageinfo'] ?? '';
+        }
+      }
       public function message($msg="") {
         if(!empty($msg)) {
           // Then this is a "set" message
@@ -76,6 +96,8 @@ class Session
     
       public function clear_message() {
         unset($_SESSION['message']);
+        unset($_SESSION['messagetow']);
+        unset($_SESSION['messageinfo']);
       }
 }
 
